@@ -7,4 +7,7 @@ def main(cmdline_args=None):
     args = parser.parse_args(cmdline_args)
 
     cmd = f"ping -t {args.url}"
-    os.system(cmd)
+    try:
+        os.system(cmd)
+    except KeyboardInterrupt:
+        return
