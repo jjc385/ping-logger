@@ -1,4 +1,4 @@
-import os
+import subprocess
 import argparse
 
 def main(cmdline_args=None):
@@ -6,8 +6,12 @@ def main(cmdline_args=None):
     parser.add_argument("--url", type=str, default="google.com", help="The url to ping")
     args = parser.parse_args(cmdline_args)
 
-    cmd = f"ping -t {args.url}"
+    cmd_tokens = [
+        "ping",
+        "-t",
+        args.url,
+    ]
     try:
-        os.system(cmd)
+        subprocess.run(cmd_tokens)
     except KeyboardInterrupt:
         return
