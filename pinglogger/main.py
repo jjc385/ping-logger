@@ -12,6 +12,10 @@ def main(cmdline_args=None):
         args.url,
     ]
     try:
-        subprocess.run(cmd_tokens)
+        proc = subprocess.Popen(
+            cmd_tokens,
+        )
+        proc.communicate()
+
     except KeyboardInterrupt:
         return
